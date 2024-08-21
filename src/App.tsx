@@ -1,5 +1,7 @@
 // import img from '@assets/images/android-chrome-512x512.png'
 
+import PageNotFound from "@ui/common/pages/PageNotFound"
+import Deluxe from "@ui/landing/pages/Deluxe"
 import Home from "@ui/landing/pages/Home"
 import LandingPageTemplate from "@ui/landing/templates/LandingPageTemplate"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -12,6 +14,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: '/home', element: <Home /> },
+      { path: '/rooms/deluxe', element: <Deluxe /> },
+      { path: '*', element: <PageNotFound /> },
     ],
   }
 

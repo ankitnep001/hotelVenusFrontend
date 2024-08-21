@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Menu from "./sidebar/Menu";
 
-const Navbar = () => {
+const RoomNavbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -14,7 +14,6 @@ const Navbar = () => {
             document.body.classList.remove('overflow-hidden');
         }
     };
-
     return (
         <nav className="absolute top-0 left-0 w-full h-[90px] px-14 flex justify-between items-center z-50 bg-gradient-to-b from-black/50 to-transparent">
             <Logo />
@@ -35,7 +34,7 @@ const Navbar = () => {
                 </div>
             )}
         </nav>
-    );
-};
+    )
+}
 
-export default Navbar;
+export default RoomNavbar
