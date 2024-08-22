@@ -15,15 +15,15 @@ const RoomNavbar = () => {
         }
     };
     return (
-        <nav className="absolute top-0 left-0 w-full h-[90px] px-14 flex justify-between items-center z-50 bg-gradient-to-b from-black/50 to-transparent">
-            <Logo />
+        <nav className="bg-[#f6e6d6]  px-14 flex justify-between items-center z-100">
+            <Logo textColor="text-[#5b3423]" />
             <div className="flex items-center gap-x-8">
                 <button
-                    className="hidden md:flex border-2 border-[#ffeedc] text-[#ffeedc] rounded-sm py-2 px-4 hover:bg-[#ffeedc] hover:text-black cursor-pointer">
+                    className="hidden md:flex border-2 border-[#5b3423] text-[#5b3423] rounded-sm py-2 px-4 hover:bg-[#ffeedc] hover:text-black cursor-pointer">
                     Book Now
                 </button>
 
-                <button onClick={toggleMenu} className="text-[#ffeedc] cursor-pointer">
+                <button onClick={toggleMenu} className="text-[#5b3423] cursor-pointer">
                     {isMenuOpen ? null : <AiOutlineMenu size={18} />}
                 </button>
             </div>

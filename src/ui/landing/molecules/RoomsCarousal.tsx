@@ -36,7 +36,7 @@ const RoomsCarousel = () => {
                     <h2 className="text-[42px] text-[#4f2f1f] font-nanum">{rooms[activeIndex].name}</h2>
                     <p className="max-w-[285px] font-poppins text-[17px] mb-5">{rooms[activeIndex].description}</p>
                     <ul className="grid grid-cols-2 max-w-[300px] gap-y-3 mb-3">
-                        {rooms[activeIndex].features.map((feature, idx) => (
+                        {rooms[activeIndex].features.slice(0, 4).map((feature, idx) => (
                             <li key={idx}> {feature}</li>
                         ))}
                     </ul>
