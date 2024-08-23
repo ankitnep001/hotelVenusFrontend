@@ -22,13 +22,10 @@ const suffleBlog = (array: IBlog[]): IBlog[] => {
 };
 
 const Blogs = () => {
-    // const [liked, setLiked] = useState(false);
 
     const randomBlogs = suffleBlog([...blogs]).slice(0, 3);
 
-    // const handleLikeClick = () => {
-    //     setLiked(!liked)
-    // }
+
 
     return (
         <div className="bg-[#f6e6d6] py-10 flex flex-col justify-center items-center">
@@ -37,8 +34,10 @@ const Blogs = () => {
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 px-20">
                 {randomBlogs.map((blogs, index) => (
                     <div className='group bg-[#ffeedc] flex flex-col  ' key={index}>
-                        <div className="  flex justify-center items-center ">
-                            <img src={blogs.image} alt="" className="group-hover:opacity-90 object-contain " />
+                        <div className="  flex justify-center items-center overflow-hidden">
+                            <img src={blogs.image} alt=""
+                                className="group-hover:opacity-90 object-contain transform transition-transform duration-300 ease-in-out group-hover:scale-110"
+                            />
                         </div>
 
                         <div className=" flex flex-col justify-start gap-y-4  px-5 py-5 max-w-[370px]">
