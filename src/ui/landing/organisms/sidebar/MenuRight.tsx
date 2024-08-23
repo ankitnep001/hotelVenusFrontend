@@ -1,12 +1,16 @@
-import Accomodation from "@ui/common/molecules/Accomodation"
-import NavigationList from "@ui/common/molecules/NavigationList"
+import Accomodation from "@ui/common/molecules/Accomodation";
+import NavigationList from "@ui/common/molecules/NavigationList";
 
-const MenuRight = () => {
+interface MenuProps {
+    onClose: () => void;
+}
+
+const MenuRight: React.FC<MenuProps> = ({ onClose }) => {
     return (
         <div className="w-full flex flex-col justify-center gap-y-10 px-10 ">
             <div className="w-full flex flex-col md:flex-row gap-x-15">
 
-                <Accomodation />
+                <Accomodation onClose={onClose} />
 
                 <div className="flex-1">
                     <ul className="font-nanum flex flex-col gap-y-2 text-[28px]">
@@ -23,7 +27,7 @@ const MenuRight = () => {
 
             <hr className="w-[60%]" />
             <div className=" flex items-start">
-                <NavigationList />
+                <NavigationList onClose={onClose} />
             </div>
 
         </div>

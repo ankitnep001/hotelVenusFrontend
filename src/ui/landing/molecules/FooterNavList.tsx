@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom"
 
 const FooterNavList = () => {
     return (
         <div>
             <ul className="font-poppins uppercase text-[#5b3423] text-[14px] leading-10">
-                <li className="hover:underline cursor-pointer">About</li>
+                <Link to='/about-us' ><li className="hover:underline cursor-pointer">About</li></Link>
                 <li className="hover:underline cursor-pointer">Places & sights</li>
                 <li className="hover:underline cursor-pointer">infinity pool</li>
                 <li className="hover:underline cursor-pointer">conference</li>

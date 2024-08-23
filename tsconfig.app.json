@@ -56,8 +56,8 @@
       "@models/*": [
         "models/*"
       ],
-      "@functions/*": [
-        "functions/*"
+      "@function/*": [
+        "function/*"
       ],
       "@hooks/*": [
         "hooks/*"

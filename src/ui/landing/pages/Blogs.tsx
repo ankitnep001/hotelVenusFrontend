@@ -1,17 +1,8 @@
-
-// const Blogs = () => {
-//     return (
-//         <div className="bg-[#f6e6d6] py-10 flex justify-center">
-//             <h1 className="text-[66px] font-nanum text-[#5b3423] ">Blogs</h1>
-//         </div>
-//     )
-// }
-
-// export default Blogs
-
 import { blogs } from '@data/blog';
 import { IBlog } from '@interface/blog.interface';
-import { Link } from 'react-router-dom';
+import RoomDescription from "../atoms/RoomDescription";
+import RoomHeading from "../atoms/RoomHeading";
+import RoomSlogan from "../atoms/RoomSlogan";
 
 const suffleBlog = (array: IBlog[]): IBlog[] => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -22,23 +13,26 @@ const suffleBlog = (array: IBlog[]): IBlog[] => {
 };
 
 const Blogs = () => {
-    // const [liked, setLiked] = useState(false);
 
-    const randomBlogs = suffleBlog([...blogs]).slice(0, 3);
+    const randomBlogs = suffleBlog([...blogs]).slice(0, 9);
 
-    // const handleLikeClick = () => {
-    //     setLiked(!liked)
-    // }
 
     return (
-        <div className="bg-[#f6e6d6] py-10 flex flex-col justify-center items-center">
-            <h1 className="text-[66px] font-nanum text-[#5b3423] ">Blogs</h1>
+        <div className="bg-[#f6e6d6] flex flex-col justify-center ">
+            <div>
+                <RoomHeading headingText="Blogs" />
+                <RoomSlogan slogan="Our Reads" />
+                <RoomDescription
+                    description={"Hear more stories about us, from us."} />
+            </div>
 
-            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 px-20">
+            <div className="bg-[#ffeedc] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 py-20 px-20">
                 {randomBlogs.map((blogs, index) => (
                     <div className='group bg-[#ffeedc] flex flex-col  ' key={index}>
-                        <div className="  flex justify-center items-center ">
-                            <img src={blogs.image} alt="" className="group-hover:opacity-90 object-contain " />
+                        <div className="  flex justify-center items-center overflow-hidden ">
+                            <img src={blogs.image} alt=""
+                                className="group-hover:opacity-90 object-contain transform transition-transform duration-300 ease-in-out group-hover:scale-110"
+                            />
                         </div>
 
                         <div className=" flex flex-col justify-start gap-y-4  px-5 py-5 max-w-[370px]">
@@ -57,15 +51,9 @@ const Blogs = () => {
 
                 ))}
             </div>
-            <Link to='/blogs'> <button
-                className="uppercase font-poppins tracking-widest  text-[12px] text-[#ffeedc] px-3 py-3 
-                            bg-[#5b3423] hover:bg-[#713f25] mt-10  ">
-                View All
-            </button>
-            </Link>
+
         </div>
     )
 }
 
 export default Blogs
-

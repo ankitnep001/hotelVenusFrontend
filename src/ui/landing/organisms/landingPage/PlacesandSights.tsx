@@ -3,11 +3,11 @@ import { image } from "@config/constant/image"
 const PlacesandSights = () => {
     return (
         <div className="bg-[#5b3423] flex flex-col justify-center items-center md:flex-row w-full">
-            <div className=" md:w-[30%] flex-1/2 pr-10">
+            <div className="  ">
                 <img src={image?.places} alt="" className=" w-96" />
             </div>
 
-            <div className=" md:w-[70%] flex-1  py-20 px-5">
+            <div className="  py-20 px-5">
                 <h1 className="font-poppins text-[19px] text-[#ffeedc] tracking-widest ">Places & Sights</h1>
                 <p className=" text-[#ffeedc] font-nanum text-[55px] max-w-[600px] leading-[1.2] mb-2">Discover the best attractions in Kathmandu with us!</p>
 

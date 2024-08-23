@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const FindYouAtVenus = () => {
     return (
@@ -24,7 +25,11 @@ const FindYouAtVenus = () => {
             </div>
 
             <div className="flex gap-x-6 animate-fadeInUp ">
-                <button className="uppercase font-poppins text-[12px] text-[#4F2F1F] border-2 border-[#4f2f1f] px-3 py-2 hover:bg-[#4f2f1f] hover:text-[#fffcf1]">explore more</button>
+                <Link to="/about-us">
+                    <button className="uppercase font-poppins text-[12px] text-[#4F2F1F] border-2 border-[#4f2f1f] px-3 py-2 hover:bg-[#4f2f1f] hover:text-[#fffcf1]">
+                        explore more
+                    </button>
+                </Link>
                 <button className="uppercase font-poppins text-[12px] text-[#4F2F1F] border-2 border-[#4f2f1f] px-3 py-2 hover:bg-[#4f2f1f] hover:text-[#fffcf1]">book now</button>
             </div>
         </div>

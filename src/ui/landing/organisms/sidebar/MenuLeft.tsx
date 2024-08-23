@@ -1,10 +1,14 @@
-import Logo from "@ui/common/molecules/Logo"
-import Social from "@ui/common/molecules/Social"
+import Logo from "@ui/common/molecules/Logo";
+import Social from "@ui/common/molecules/Social";
 
-const MenuLeft = () => {
+interface MenuProps {
+    onClose: () => void;
+}
+
+const MenuLeft: React.FC<MenuProps> = ({ onClose }) => {
     return (
         <div className="flex flex-col gap-y-20">
-            <Logo />
+            <Logo onClose={onClose} />
             <div className="flex flex-col justify-around items-center gap-y-5">
 
                 <div className="flex flex-col justify-center items-center gap-y-5">

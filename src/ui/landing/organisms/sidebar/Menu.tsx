@@ -15,10 +15,10 @@ const Menu: React.FC<MenuProps> = ({ onClose }) => {
 
             <div className="text-[#ffeedc] h-full w-screen flex flex-col md:flex-row ">
                 <div className="sm:bg-[#4f2f1f] md:w-[35%] h-full flex justify-center items-center px-10 py-5">
-                    <MenuLeft />
+                    <MenuLeft onClose={onClose} />
                 </div>
                 <div className="sm:bg-[#5b3421] md:w-[65%] h-full flex justify-center items-center px-2 py-3">
-                    <MenuRight />
+                    <MenuRight onClose={onClose} />
                 </div>
             </div>
         </div>

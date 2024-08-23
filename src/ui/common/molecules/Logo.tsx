@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 interface LogoProps {
     textColor?: string
+    onClose?: () => void;
 }
 
-const Logo: React.FC<LogoProps> = ({ textColor = "text-[#ffeedc]" }) => {
+const Logo: React.FC<LogoProps> = ({ textColor = "text-[#ffeedc]", onClose }) => {
     return (
-        <Link to='/home' >
+        <Link to='/home' onClick={onClose} >
             <div className={`flex items-center gap-x-5 ${textColor}`}>
                 <div className="">
                     <h1 className="font-nanum text-6xl itallic">V</h1>
