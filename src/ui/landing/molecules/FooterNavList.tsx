@@ -11,11 +11,11 @@ const FooterNavList = () => {
                 <li className="hover:underline cursor-pointer">Wellness</li>
                 <li className="hover:underline cursor-pointer">eat & drink</li>
                 <li className="hover:underline cursor-pointer">offers</li>
-                <li className="hover:underline cursor-pointer">sustainability</li>
-                <li className="hover:underline cursor-pointer">blogs</li>
-                <li className="hover:underline cursor-pointer">policies</li>
-                <li className="hover:underline cursor-pointer">reviews</li>
-                <li className="hover:underline cursor-pointer">Contact</li>
+                <Link to='/sustainability'><li className="hover:underline cursor-pointer ">Sustainability</li></Link>
+                <Link to='/blog' ><li className="hover:underline cursor-pointer ">Blogs</li></Link>
+                <Link to='/hotel-policies'><li className="hover:underline cursor-pointer uppercase">Policies</li></Link>
+                <Link to='/review'><li className="hover:underline cursor-pointer ">Reviews</li></Link>
+                <Link to='/contact' ><li className="hover:underline cursor-pointer uppercase">Contact</li></Link>
             </ul>
         </div>
     )

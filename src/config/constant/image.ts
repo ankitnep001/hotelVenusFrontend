@@ -1,6 +1,8 @@
 import aboutUs from '@assets/images/aboutus.webp'
 import bhrikutiSuit from '@assets/images/bhrikutisuit.webp'
 import bhrikuriSuiteTwo from '@assets/images/bhrikutiSuiteTwo.webp'
+import career from '@assets/images/career.webp'
+import contact from '@assets/images/contact.webp'
 import delux from '@assets/images/deluxroom.webp'
 import deluxetwo from '@assets/images/deluxtwo.webp'
 import executive from '@assets/images/executiveroom.webp'
@@ -47,5 +49,7 @@ export const image = {
     historyTop,
     historyOne,
     historyTwo,
-    tibetianTouch
+    tibetianTouch,
+    career,
+    contact
 }

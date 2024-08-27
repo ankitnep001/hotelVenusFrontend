@@ -1,13 +1,5 @@
 
-// const Blogs = () => {
-//     return (
-//         <div className="bg-[#f6e6d6] py-10 flex justify-center">
-//             <h1 className="text-[66px] font-nanum text-[#5b3423] ">Blogs</h1>
-//         </div>
-//     )
-// }
 
-// export default Blogs
 
 import { blogs } from '@data/blog';
 import { IBlog } from '@interface/blog.interface';
@@ -56,11 +48,12 @@ const Blogs = () => {
 
                 ))}
             </div>
-            <Link to='/blogs'> <button
-                className="uppercase font-poppins tracking-widest  text-[12px] text-[#ffeedc] px-3 py-3 
+            <Link to='/blogs'>
+                <button
+                    className="uppercase font-poppins tracking-widest  text-[12px] text-[#ffeedc] px-3 py-3 
                             bg-[#5b3423] hover:bg-[#713f25] mt-10  ">
-                View All
-            </button>
+                    View All
+                </button>
             </Link>
         </div>
     )
