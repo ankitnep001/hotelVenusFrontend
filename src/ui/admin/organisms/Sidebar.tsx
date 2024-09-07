@@ -3,6 +3,7 @@ import { adminSidebar } from "@data/adminSidebar"; // Adjust the import path if 
 import { adminSidebarIcon } from "@ui/admin/atoms/SidebarIcon";
 import ConfirmationBox from "@ui/common/molecules/ConfirmationBox";
 import { useState } from "react";
+import { IoLogOutOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom"; // Assuming you're using React Router for navigation
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -26,8 +27,8 @@ const Sidebar = () => {
             <ul>
                 {adminSidebar.map((item) => (
 
-                    <li key={item.id} className="mb-4 hover:bg-[#f7f8fc] flex items-center gap-x-2 px-4 py-2 ">
-                        <span className="mr-2">
+                    <li key={item.id} title={item.title} className="mb-4 hover:bg-[#f7f8fc] flex items-center gap-x-2 px-4 py-2 ">
+                        <span className="mr-2 text-[#56595a] h-4 w-4">
                             {adminSidebarIcon[item.label]} {/* Display the icon */}
                         </span>
                         <Link to={item.route} className="text-[#56595a] ">
@@ -35,7 +36,10 @@ const Sidebar = () => {
                         </Link>
                     </li>
                 ))}
-                <li onClick={openModal} className="mb-4 hover:bg-[#f7f8fc] px-4 py-2 text-[#56595a] hover:cursor-pointer">Logout</li>
+                <li onClick={openModal} className=" flex gap-x-2 mb-4 hover:bg-[#f7f8fc] px-4 py-2 text-[#56595a] hover:cursor-pointer">
+
+                    <span><IoLogOutOutline size={22} /></span>Logout
+                </li>
             </ul>
 
             {modal && (
