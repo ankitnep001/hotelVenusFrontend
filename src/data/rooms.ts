@@ -16,7 +16,6 @@ export const rooms = [
             "Desk",
             "Coffee Maker",
             "Seating Area",
-
             "TV",
             "Phone",
             "Iron",
@@ -62,7 +61,7 @@ export const rooms = [
             "Satellite/Cable TV",
             "Phone",
             "Iron",
-            "Sweing Kit",
+            "sewing Kit",
             "Complimentary Fruit Basket",
             "Non-Smoking Rooms",
         ],

@@ -1,4 +1,5 @@
 import { rooms } from "@data/rooms";
+import RoomFeatureIcons from "@ui/common/atoms/RoomFeatureIcons";
 
 interface RoomFacilitiesProps {
     roomName: string;
@@ -21,9 +22,13 @@ const RoomFacilities: React.FC<RoomFacilitiesProps> = ({ roomName }) => {
                 <p className="font-poppins text-[17px] max-w-[390px]">Enjoy our {room?.name} and its complimentary offerings.</p>
 
                 {/* Map the selected room features */}
-                <ul className="grid grid-cols-2 max-w-[300px] gap-y-3 mb-3 px-5">
+                <ul className="grid grid-cols-2 max-w-[400px] gap-y-3 mb-3 px-5">
                     {room?.features.map((feature, idx) => (
-                        <li key={idx}>{feature}</li>
+                        <li key={idx} className="flex items-center gap-x-1">
+                            <RoomFeatureIcons feature={feature} />
+                            {/* Changed from <li> to <span> to avoid nested <li> */}
+                            <span>{feature}</span>
+                        </li>
                     ))}
                 </ul>
                 <button className="uppercase font-poppins text-[12px] text-[#4F2F1F] border-2 border-[#4f2f1f] px-3 py-2 hover:bg-[#4f2f1f] hover:text-[#fffcf1] max-w-[123px] mt-5">

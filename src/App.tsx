@@ -1,4 +1,5 @@
 
+import AdminDashboard from "@ui/admin/pages/AdminDashboard"
 import PageNotFound from "@ui/common/pages/PageNotFound"
 import AboutUs from "@ui/landing/pages/AboutUs"
 import BhrikutiSuite from "@ui/landing/pages/BhrikutiSuite"
@@ -16,7 +17,11 @@ import Sustainability from "@ui/landing/pages/Sustainability"
 import WenchengSuite from "@ui/landing/pages/WenchengSuite"
 import LandingPageTemplate from "@ui/landing/templates/LandingPageTemplate"
 import RoomTemplate from "@ui/landing/templates/RoomTemplate"
+import Login from "@ui/user/pages/auth/Login"
+import SignUp from "@ui/user/pages/auth/SignUp"
+import BookingForm from "@ui/user/pages/Booking"
 import ScrollToTop from "function/ScrollToTop"
+import ProtectedRoute from "ProtectedRoute"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 const router = createBrowserRouter([
@@ -73,6 +78,37 @@ const router = createBrowserRouter([
 
       { path: '*', element: <PageNotFound /> },
     ],
+  },
+
+  {
+    path: '/auth',
+    element: null,
+    children: [
+      { index: true, element: <Login /> },
+      { path: 'login', element: <Login /> },
+      { path: 'sign-up', element: <SignUp /> },
+
+      { path: '*', element: <PageNotFound /> }
+    ]
+  },
+
+  {
+    path: '/',
+    element: null,
+    children: [
+      { index: true, element: <BookingForm /> },
+      { path: '/booking', element: <BookingForm /> },
+
+      { path: '*', element: <PageNotFound /> }
+    ]
+  },
+  {
+    path: '/admin',
+    element: <ProtectedRoute />,
+    children: [
+      { index: true, element: <AdminDashboard /> },
+      // { path: 'dashboard', element: <AdminDashboard /> }
+    ]
   }
 
 
