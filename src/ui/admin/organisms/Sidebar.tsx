@@ -23,7 +23,7 @@ const Sidebar = () => {
         navigate('/');
     };
     return (
-        <div className="bg-[#ffffff] left-0 px-3 pb-8 pt-3 border-1 border-[#e4e4f4] h-screen">
+        <aside className="bg-[#ffffff] left-0 px-3 pb-8 pt-3 border-1 border-[#e4e4f4] h-screen">
             <ul>
                 {adminSidebar.map((item) => (
 
@@ -49,7 +49,7 @@ const Sidebar = () => {
                     </div>
                 </div>
             )}
-        </div>
+        </aside>
     );
 }
 

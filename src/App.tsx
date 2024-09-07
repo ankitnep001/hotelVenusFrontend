@@ -1,5 +1,6 @@
 
 import AdminDashboard from "@ui/admin/pages/AdminDashboard"
+import SiteOptions from "@ui/admin/pages/SiteOptions"
 import PageNotFound from "@ui/common/pages/PageNotFound"
 import AboutUs from "@ui/landing/pages/AboutUs"
 import BhrikutiSuite from "@ui/landing/pages/BhrikutiSuite"
@@ -107,7 +108,8 @@ const router = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       { index: true, element: <AdminDashboard /> },
-      // { path: 'dashboard', element: <AdminDashboard /> }
+      { path: 'dashboard', element: <AdminDashboard /> },
+      { path: 'options', element: <SiteOptions /> },
     ]
   }
 
