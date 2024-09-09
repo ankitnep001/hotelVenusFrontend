@@ -1,8 +1,10 @@
+import RoomPages from "@ui/admin/molecules/siteFooter/RoomPages"
 
 const SiteFooter = () => {
     return (
         <div>
-            this is footer
+            <RoomPages />
+            <hr />
         </div>
     )
 }
