@@ -24,16 +24,21 @@ const RoomLinksAdmin = () => {
     };
 
     return (
-        <div className="p-4 ">
-            <p className="font-poppins text-[0.875rem]  mb-4">Room</p>
+        <div className="p-4">
+            <p className="font-poppins text-[0.875rem] mb-4">Room</p>
 
             {/* Heading */}
             <div className="flex items-center gap-4 font-semibold mb-2">
                 <p className="font-poppins font-medium text-[1rem] w-12">S.N</p>
                 <p className="font-poppins font-medium text-[1rem] flex-1">Pages</p>
                 <p className="w-24">
-                    <button type="button"
-                        onClick={handleAddRow} className="bg-[#6b3aa3] text-white py-1 px-2 rounded-md ">Add New</button>
+                    <button
+                        type="button"
+                        onClick={handleAddRow}
+                        className="bg-[#6b3aa3] text-white py-1 px-2 rounded-md"
+                    >
+                        Add New
+                    </button>
                 </p>
             </div>
 
@@ -41,15 +46,14 @@ const RoomLinksAdmin = () => {
             {rows.map((row, index) => (
                 <div key={index} className="flex items-center gap-4 mb-4">
                     {/* Serial Number */}
-                    <p className=" font-poppins  w-12">{index + 1}</p>
+                    <p className="font-poppins w-12">{index + 1}</p>
                     {/* Page Input */}
                     <input
                         type="text"
                         value={row.page}
                         onChange={(event) => handleInputChange(index, event)}
-                        className="flex-1 border px-[0.75rem] py-[0.4375rem] focus:outline-none "
-                        placeholder=""
-
+                        className="flex-1 border border-gray-300 px-[0.75rem] py-[0.4375rem] rounded-md focus:outline-none"
+                        placeholder="Enter page name"
                     />
                     {/* Add & Delete Buttons */}
                     <div className="flex gap-2 w-24">
@@ -57,7 +61,7 @@ const RoomLinksAdmin = () => {
                         <button
                             type="button"
                             onClick={handleAddRow}
-                            className="bg-[#6b3aa3] hover:bg-[#713dad] text-white px-[0.6rem] py-[0.47rem] rounded-md "
+                            className="bg-[#6b3aa3] hover:bg-[#713dad] text-white px-[0.6rem] py-[0.47rem] rounded-md"
                         >
                             <IoAddCircleOutline />
                         </button>
@@ -66,7 +70,7 @@ const RoomLinksAdmin = () => {
                             <button
                                 type="button"
                                 onClick={() => handleDeleteRow(index)}
-                                className="bg-red-500 text-white px-[0.6rem] py-[0.47rem] rounded-md hover:bg-red-600"
+                                className="bg-red-500 hover:bg-red-600 text-white px-[0.6rem] py-[0.47rem] rounded-md"
                             >
                                 <IoTrashOutline />
                             </button>

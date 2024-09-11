@@ -1,5 +1,6 @@
 
 import AdminDashboard from "@ui/admin/pages/AdminDashboard"
+import Room from "@ui/admin/pages/Room"
 import SiteOptions from "@ui/admin/pages/SiteOptions"
 import PageNotFound from "@ui/common/pages/PageNotFound"
 import AboutUs from "@ui/landing/pages/AboutUs"
@@ -110,6 +111,7 @@ const router = createBrowserRouter([
       { index: true, element: <AdminDashboard /> },
       { path: 'dashboard', element: <AdminDashboard /> },
       { path: 'options', element: <SiteOptions /> },
+      { path: 'rooms', element: <Room /> },
     ]
   }
 

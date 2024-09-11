@@ -29,20 +29,22 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
             >
                 <ul>
                     {adminSidebar.map((item) => (
-                        <li
-                            key={item.id}
-                            title={item.title}
-                            className="mb-4 hover:bg-[#f7f8fc] flex items-center gap-x-2 px-4 py-2"
-                        >
-                            <Link to={item.route} className="mr-2 text-[#56595a] h-4 w-4">
-                                {adminSidebarIcon[item.label]}
-                            </Link>
-                            {isOpen && (
-                                <Link to={item.route} className="text-[#56595a]">
-                                    {item.label}
-                                </Link>
-                            )}
-                        </li>
+                        <Link to={item.route}>
+                            <li
+                                key={item.id}
+                                title={item.title}
+                                className="mb-4 hover:bg-[#f7f8fc] flex items-center gap-x-2 px-4 py-2"
+                            >
+                                <p className="mr-2 text-[#56595a] h-4 w-4">
+                                    {adminSidebarIcon[item.label]}
+                                </p>
+                                {isOpen && (
+                                    <Link to={item.route} className="text-[#56595a]">
+                                        {item.label}
+                                    </Link>
+                                )}
+                            </li>
+                        </Link>
                     ))}
                     <li
                         onClick={openModal}
