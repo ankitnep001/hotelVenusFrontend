@@ -1,9 +1,12 @@
-import RoomPages from "@ui/admin/molecules/siteFooter/RoomPages"
+import OtherLinksAdmin from "@ui/admin/molecules/OtherLinksAdmin"
+import RoomLinksAdmin from "@ui/admin/molecules/RoomLinksAdmin"
 
 const SiteFooter = () => {
     return (
-        <div>
-            <RoomPages />
+        <div className="w-full">
+            <RoomLinksAdmin />
+            <hr />
+            <OtherLinksAdmin />
             <hr />
         </div>
     )

@@ -3,7 +3,7 @@ import SiteFooter from "../organisms/siteOptions/SiteFooter";
 import SiteHeader from "../organisms/siteOptions/SiteHeader";
 import SiteInfoSection from "../organisms/siteOptions/SiteInfoSection";
 import SiteOptionNav from "../organisms/siteOptions/SiteOptionNav";
-import SiteSocialMedia from "../organisms/SiteSocialMedia";
+import SiteSocialMedia from "../organisms/siteOptions/SiteSocialMedia";
 
 const SiteOptions = () => {
 

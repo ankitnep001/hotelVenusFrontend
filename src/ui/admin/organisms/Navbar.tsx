@@ -27,19 +27,20 @@ const Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
                 <div className="flex md:hidden">
                     <p className="font-poppins text-white font-medium text-2xl">A</p>
                 </div>
-                <div className="hidden md:flex">
+                <div className="hidden md:flex gap-x-2 items-center">
                     <p className="font-poppins text-white font-medium text-2xl">Admin Panel</p>
                     <TiThMenu onClick={toggleSidebar} className="cursor-pointer" color="white" size={25} />
                 </div>
             </div>
 
-            <div className=" bg-[#ffffff] px-8 flex-1 flex justify-between items-center w-full">
-                <div className="hidden md:flex justify-center items-center gap-x-2 w-full ">
+            <div className=" bg-[#ffffff] px-8 flex-1 flex  items-center w-full">
+                <div className="hidden md:flex  items-center gap-x-2 w-full ">
                     <img src={adminImage?.adminProfile} alt="Admin Profile" className="h-8" />
                     <p className="font-poppins text-[0.5rem] md:text-[1rem]">Welcome, {adminName && capitalizeWords(adminName)}</p>
-                    <p className="font-poppins text-xs">Last login: {timeAgo(lastLogin)}</p>
+                    <p className=" font-poppins text-xs">Last login: {timeAgo(lastLogin)}</p>
                 </div>
                 <div className="flex justify-end items-center w-full gap-x-3">
+
                     <button className="bg-[#ffffff] p-2 border-2 border-[#e4e4f4] shadow-xl rounded-md">
                         <IoEarth className="text-gray-500" />
                     </button>

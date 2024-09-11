@@ -17,8 +17,8 @@ const AdminTemplate = () => {
                 <Navbar toggleSidebar={toggleSidebar} />
                 <div className="flex flex-1 py-6">
                     <Sidebar isOpen={isSidebarOpen} />
-                    <div className={`flex flex-col flex-1 ml-6 transition-all duration-300 ${isSidebarOpen ? " " : ""}`}>
-                        <div className={`flex-1 overflow-auto mb-6 transition-all duration-300 ${isSidebarOpen ? "" : "bg-opacity-50"}`}>
+                    <div className={`flex flex-col flex-1 mx-6  transition-all duration-300 `}>
+                        <div className={`flex-1 overflow-auto mb-6 transition-all duration-300  `}>
                             <Outlet />
                         </div>
                         <Footer />

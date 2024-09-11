@@ -30,7 +30,7 @@ const InputField: React.FC<InputProps> = ({ name, type, placeholder, autocomplet
                 disabled={disabled}
                 autoComplete={autocomplete}
                 className={`font-poppins w-full text-sm mb-2 pl-10 pr-3 py-2 border-2 border-[#5b3423] rounded-md focus:outline-none ${disabled ? 'cursor-not-allowed' : ''}`}
-                {...register(name)}
+                {...(register && register(name))} // Properly apply the register function
 
             />
             {type === 'password' && (

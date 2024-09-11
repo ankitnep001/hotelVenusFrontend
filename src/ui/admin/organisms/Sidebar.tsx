@@ -25,7 +25,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
     return (
         <>
             <aside
-                className={`${isOpen ? 'translate-x-0 ' : '-translate-x-full'} fixed w-fit md:relative md:translate-x-0  transition-transform duration-300 bg-[#ffffff] left-0 px-3 pb-8 pt-3 border-[1px] border-[#e4e4f4] shadow-md h-screen`}
+                className={`${isOpen ? 'translate-x-0 ' : '-translate-x-full'} fixed w-fit md:relative md:translate-x-0  transition-transform duration-300 bg-[#ffffff] left-0 px-3 pb-8 pt-3 md:ml-6 border-[1px] border-[#e4e4f4] shadow-md h-screen z-10`}
             >
                 <ul>
                     {adminSidebar.map((item) => (
