@@ -64,6 +64,9 @@
       ],
       "@interface/*": [
         "interface/*"
+      ],
+      "@services/*": [
+        "services/*"
       ]
     }
   },

@@ -1,3 +1,5 @@
+// src/ui/admin/organisms/Sidebar.tsx
+
 import { adminSidebar } from "@data/adminSidebar";
 import { adminSidebarIcon } from "@ui/admin/atoms/SidebarIcon";
 import ConfirmationBox from "@ui/common/molecules/ConfirmationBox";
@@ -25,26 +27,26 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
     return (
         <>
             <aside
-                className={`${isOpen ? 'translate-x-0 ' : '-translate-x-full'} fixed w-fit md:relative md:translate-x-0  transition-transform duration-300 bg-[#ffffff] left-0 px-3 pb-8 pt-3 md:ml-6 border-[1px] border-[#e4e4f4] shadow-md h-screen z-10`}
+                className={`${isOpen ? 'translate-x-0 ' : '-translate-x-full'} fixed w-fit md:relative md:translate-x-0 transition-transform duration-300 bg-[#ffffff] left-0 px-3 pb-8 pt-3 md:ml-6 border-[1px] border-[#e4e4f4] shadow-md h-screen z-10`}
             >
                 <ul>
                     {adminSidebar.map((item) => (
-                        <Link to={item.route}>
-                            <li
-                                key={item.id}
-                                title={item.title}
-                                className="mb-4 hover:bg-[#f7f8fc] flex items-center gap-x-2 px-4 py-2"
-                            >
+                        <li
+                            key={item.id} // Assign key to the top-level <li> element
+                            title={item.title}
+                            className="mb-4 hover:bg-[#f7f8fc] flex items-center gap-x-2 px-4 py-2"
+                        >
+                            <Link to={item.route} className="flex items-center w-full">
                                 <p className="mr-2 text-[#56595a] h-4 w-4">
                                     {adminSidebarIcon[item.label]}
                                 </p>
                                 {isOpen && (
-                                    <Link to={item.route} className="text-[#56595a]">
+                                    <span className="text-[#56595a]">
                                         {item.label}
-                                    </Link>
+                                    </span>
                                 )}
-                            </li>
-                        </Link>
+                            </Link>
+                        </li>
                     ))}
                     <li
                         onClick={openModal}

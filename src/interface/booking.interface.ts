@@ -1,9 +1,11 @@
 
 
 
-export interface IBooking {
+export interface GetBookingList {
+    _id: string;
+    id: string
     name: string;
-    numberOfPeople: number;
+    numberOfRoom: number;
     rooms: string[];
     checkInDate: string;
     checkOutDate: string;

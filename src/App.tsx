@@ -1,7 +1,10 @@
 
 import AdminDashboard from "@ui/admin/pages/AdminDashboard"
+import ManageBooking from "@ui/admin/pages/ManageBooking"
+import ManageAdmin from "@ui/admin/pages/ManageUser"
 import Room from "@ui/admin/pages/Room"
 import SiteOptions from "@ui/admin/pages/SiteOptions"
+import UserProfile from "@ui/admin/pages/UserProfile"
 import PageNotFound from "@ui/common/pages/PageNotFound"
 import AboutUs from "@ui/landing/pages/AboutUs"
 import BhrikutiSuite from "@ui/landing/pages/BhrikutiSuite"
@@ -112,6 +115,9 @@ const router = createBrowserRouter([
       { path: 'dashboard', element: <AdminDashboard /> },
       { path: 'options', element: <SiteOptions /> },
       { path: 'rooms', element: <Room /> },
+      { path: 'users', element: <ManageAdmin /> },
+      { path: 'profile', element: <UserProfile /> },
+      { path: 'manage-booking', element: <ManageBooking /> },
     ]
   }
 
