@@ -1,20 +1,59 @@
+import axiosInstance from "@services/instance"; // Adjust the import based on your project structure
+import { toast } from "@ui/common/organisms/toast/ToastManage"; // Adjust the import based on your project structure
+import { useEffect, useState } from "react";
 import { MdOutlineLocationOn, MdOutlineMail, MdOutlinePhone, MdOutlineWhatsapp } from "react-icons/md";
 
+// Define the SiteInfo interface
+interface SiteInfo {
+    enquiryEmail: string;
+    contactEmail: string;
+    address: string;
+    phoneNumbers: string[]; // Assuming phoneNumbers is an array of strings
+    whatsapp: string;
+}
+
 const HotelInfo = () => {
+    const [siteInfo, setSiteInfo] = useState<SiteInfo | null>(null); // Use the SiteInfo type
+
+    // Fetch site info data on component mount
+    useEffect(() => {
+        const fetchSiteInfo = async () => {
+            try {
+                const response = await axiosInstance.get("/siteInfo");
+
+                if (response.data) {
+                    setSiteInfo(response.data.data);
+                }
+            } catch (error) {
+                console.error("Error fetching site info data:", error);
+                toast.show({ title: "Error", content: "Failed to load site information", duration: 2000, type: "error" });
+            }
+        };
+
+        fetchSiteInfo();
+    }, []);
+
+    if (!siteInfo) return <p>Loading...</p>; // Optional loading state
+
     return (
         <div className="flex flex-col gap-y-1 font-poppins text-[17px] text-[#ffeedc]">
             <div className="mb-3">
                 <h1 className="uppercase font-poppins text-[14px] tracking-widest ">kathmandu office</h1>
-                <p className="flex items-center gap-x-2"><MdOutlineLocationOn /> Khadbari, Sankhuwasabha, Nepal</p>
+                <p className="flex items-center gap-x-2">
+                    <MdOutlineLocationOn /> {siteInfo.address}
+                </p>
                 <p className="flex items-center gap-x-2">
                     <MdOutlinePhone />
-                    <span className="hover:underline cursor-pointer">+977 1 4650251</span>
-                    /
-                    <span className="hover:underline cursor-pointer">+977 1 4650351</span>
+                    {siteInfo.phoneNumbers.map((phone, index) => (
+                        <span key={index} className="hover:underline cursor-pointer">
+                            {phone}
+                            {index < siteInfo.phoneNumbers.length - 1 ? " / " : ""}
+                        </span>
+                    ))}
                 </p>
                 <p className="flex items-center gap-x-2">
                     <MdOutlineWhatsapp />
-                    +977 9808209299
+                    {siteInfo.whatsapp}
                 </p>
             </div>
 
@@ -22,7 +61,7 @@ const HotelInfo = () => {
                 <p className="uppercase font-poppins text-[14px] tracking-widest ">For general enquiries please contact:</p>
                 <p className="flex items-center gap-x-2 hover:underline cursor-pointer">
                     <MdOutlineMail />
-                    info@venushotel.com
+                    {siteInfo.contactEmail}
                 </p>
             </div>
 
@@ -34,7 +73,7 @@ const HotelInfo = () => {
                 </p>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default HotelInfo
+export default HotelInfo;
