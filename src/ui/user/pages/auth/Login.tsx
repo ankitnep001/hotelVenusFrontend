@@ -63,6 +63,9 @@ const Login = () => {
             } else {
                 navigate('/booking', { replace: true });
             }
+            console.log(response);
+
+
         } catch (error: unknown) {
             console.error('Error:', error);
             toast.show({ title: "Error", content: "Login unsuccessfully", duration: 2000, type: 'error' });
