@@ -1,6 +1,7 @@
 import axiosInstance from "@services/instance"; // Assuming this is your axios instance
 import InputField from "@ui/common/atoms/InputField";
 import Label from "@ui/common/atoms/Label";
+import { toast } from "@ui/common/organisms/toast/ToastManage";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FaFacebookF, FaInstagram, FaLinkedin, FaTripadvisor, FaTwitter, FaYoutube } from "react-icons/fa";
@@ -54,15 +55,15 @@ const SiteSocialMedia = () => {
                 },
             });
 
-            if (response.status === 200) {
-                alert("Social media links updated successfully");
-            } else {
-                console.error("Error updating social media links");
-            }
+
+            toast.show({ title: "Success", content: "Updated successfully", duration: 2000, type: 'success' });
+
             console.log(response);
 
         } catch (error) {
             console.error("Error in the update request:", error);
+            toast.show({ title: "Error", content: "Update unsuccessfully", duration: 2000, type: 'success' });
+
         }
     };
 

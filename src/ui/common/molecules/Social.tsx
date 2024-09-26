@@ -23,6 +23,8 @@ const Social: React.FC = () => {
             try {
                 const response = await axiosInstance.get("/social"); // Adjust the API endpoint
                 setSocialLinks(response.data.data);
+                console.log(response);
+
             } catch (error) {
                 console.error("Error fetching social media links:", error);
             }

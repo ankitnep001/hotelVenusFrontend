@@ -23,7 +23,7 @@ const FooterSocial: React.FC = () => {
             try {
                 const response = await axiosInstance.get("/social"); // Adjust API endpoint
                 setSocialLinks(response.data.data);
-                // console.log(response);
+                console.log(response);
 
             }
 
