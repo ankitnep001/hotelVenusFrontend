@@ -6,6 +6,7 @@ import Button from '@ui/common/atoms/Button';
 import InputField from '@ui/common/atoms/InputField';
 import Label from '@ui/common/atoms/Label';
 import Logo from '@ui/common/molecules/Logo';
+import { toast } from '@ui/common/organisms/toast/ToastManage';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { AiOutlineLock } from 'react-icons/ai';
@@ -39,7 +40,7 @@ const Login = () => {
                 email: data.email,
                 password: data.password,
             });
-            console.log('Response:', response);
+            // console.log('Response:', response);
 
             const accessToken = response.data?.data?.token?.accessToken;
             const role = response.data?.data?.role;
@@ -50,14 +51,11 @@ const Login = () => {
 
             const encrypted = encrypt(accessToken);
 
-            // if (rememberMe) {
-            //     localStorage.setItem('accessTokenHotelVenus', encrypted as string);
-            // } else {
-            //     sessionStorage.setItem('accessTokenHotelVenus', encrypted as string);
-            // }
             sessionStorage.setItem('accessTokenHotelVenus', encrypted as string);
 
             localStorage.setItem('HotelVenusName', response.data.data.name)
+            toast.show({ title: "Success", content: "Login successfully", duration: 2000, type: 'success' });
+
 
             if (role === 'ADMIN') {
                 localStorage.setItem('HotelVenusLastLogin', new Date().toISOString());
@@ -67,6 +65,8 @@ const Login = () => {
             }
         } catch (error: unknown) {
             console.error('Error:', error);
+            toast.show({ title: "Error", content: "Login unsuccessfully", duration: 2000, type: 'error' });
+
         }
     };
 

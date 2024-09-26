@@ -1,56 +1,74 @@
+import axiosInstance from "@services/instance"; // Adjust this import based on your axios instance
+import { useEffect, useState } from "react";
 import { FaFacebookF, FaInstagram, FaTripadvisor, FaWhatsapp } from "react-icons/fa";
 
-const Social = () => {
-    return (
-        <div className="flex items justify-center gap-x-3 ">
-
-            <p className="bg-[#6f4028] rounded-full p-2 hover:bg-white hover:text-black " >
-                <FaFacebookF className="text-[#ffeedc] hover:text-black" />
-            </p>
-            <p className="bg-[#6f4028] rounded-full p-2 hover:bg-white hover:text-black " >
-                <FaInstagram className="text-[#ffeedc] hover:text-black" />
-            </p>
-            <p className="bg-[#6f4028] rounded-full p-2 hover:bg-white hover:text-black " >
-                <FaTripadvisor className="text-[#ffeedc] hover:text-black" />
-            </p>
-            <p className="bg-[#6f4028] rounded-full p-2 hover:bg-white hover:text-black " >
-                <FaWhatsapp className="text-[#ffeedc] hover:text-black" />
-            </p>
-        </div>
-    )
+interface SocialLinks {
+    facebook?: string;
+    instagram?: string;
+    tripAdvisor?: string;
+    whatsApp?: string;
 }
 
-export default Social
+const Social: React.FC = () => {
+    const [socialLinks, setSocialLinks] = useState<SocialLinks>({
+        facebook: "",
+        instagram: "",
+        tripAdvisor: "",
+        whatsApp: "",
+    });
 
-// import { FaFacebookF, FaInstagram, FaTripadvisor, FaWhatsapp } from "react-icons/fa";
+    // Fetch the social media links from the API
+    useEffect(() => {
+        const fetchSocialMediaLinks = async () => {
+            try {
+                const response = await axiosInstance.get("/social"); // Adjust the API endpoint
+                setSocialLinks(response.data.data);
+            } catch (error) {
+                console.error("Error fetching social media links:", error);
+            }
+        };
+        fetchSocialMediaLinks();
+    }, []);
 
-// interface SocialProps {
-//     textColor: string
-//     showBackground: string
-//     showHover: string
-// }
+    return (
+        <div className="flex items justify-center gap-x-3 ">
+            {/* Facebook */}
+            {socialLinks.facebook && (
+                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+                    <p className="bg-[#6f4028] rounded-full p-2 hover:bg-white hover:text-black">
+                        <FaFacebookF className="text-[#ffeedc] hover:text-black" />
+                    </p>
+                </a>
+            )}
 
-// const Social: React.FC<SocialProps> = ({ textColor = "[#ffeedc]", showBackground = true, showHover = true }) => {
+            {/* Instagram */}
+            {socialLinks.instagram && (
+                <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+                    <p className="bg-[#6f4028] rounded-full p-2 hover:bg-white hover:text-black">
+                        <FaInstagram className="text-[#ffeedc] hover:text-black" />
+                    </p>
+                </a>
+            )}
 
-//     const backgroundClass = showBackground ? "bg-[#6f4028]" : "";
-//     const hoverClass = showHover ? "hover:bg-white" : "hover:bg-[#]"
-//     return (
-//         <div className="flex items justify-center gap-x-3 ">
+            {/* TripAdvisor */}
+            {socialLinks.tripAdvisor && (
+                <a href={socialLinks.tripAdvisor} target="_blank" rel="noopener noreferrer">
+                    <p className="bg-[#6f4028] rounded-full p-2 hover:bg-white hover:text-black">
+                        <FaTripadvisor className="text-[#ffeedc] hover:text-black" />
+                    </p>
+                </a>
+            )}
 
-//             <p className={`${backgroundClass} rounded-full p-2 hover:bg-white hover:text-black`}>
-//                 <FaFacebookF className={`${textColor} hover:text-black`} />
-//             </p>
-//             <p className={`${backgroundClass} rounded-full p-2 hover:bg-white hover:text-black`}>
-//                 <FaInstagram className={`${textColor} hover:text-black`} />
-//             </p>
-//             <p className={`${backgroundClass} rounded-full p-2 hover:bg-white hover:text-black`}>
-//                 <FaTripadvisor className={`${textColor} hover:text-black`} />
-//             </p>
-//             <p className={`${backgroundClass} rounded-full p-2 hover:bg-white hover:text-black`}>
-//                 <FaWhatsapp className={`${textColor} hover:text-black`} />
-//             </p>
-//         </div>
-//     )
-// }
+            {/* WhatsApp */}
+            {socialLinks.whatsApp && (
+                <a href={socialLinks.whatsApp} target="_blank" rel="noopener noreferrer">
+                    <p className="bg-[#6f4028] rounded-full p-2 hover:bg-white hover:text-black">
+                        <FaWhatsapp className="text-[#ffeedc] hover:text-black" />
+                    </p>
+                </a>
+            )}
+        </div>
+    );
+};
 
-// export default Social
+export default Social;
