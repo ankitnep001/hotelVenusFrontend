@@ -1,8 +1,16 @@
 export const adminSidebar = [
     { id: 1, label: 'Dashboard', route: '/admin/dashboard', title: 'Dashboard' },
     { id: 2, label: 'Site Options', route: '/admin/options', title: 'Site Options' },
-    { id: 3, label: 'Rooms', route: '/admin/rooms', title: 'Rooms' },
-    { id: 4, label: 'Manage Booking', route: '/admin/manage-booking', title: 'Manage Booking' },
+    {
+        id: 3,
+        label: 'Rooms',
+        title: 'Rooms',
+        // route: '/admin/rooms',
+        subItems: [
+            { id: 31, label: 'All Rooms', route: '/admin/rooms', title: 'All Rooms' },
+            { id: 32, label: 'Add Room', route: '/admin/rooms/create', title: 'Add Room' },
+        ]
+    }, { id: 4, label: 'Manage Booking', route: '/admin/manage-booking', title: 'Manage Booking' },
     { id: 5, label: 'Pages', route: '/admin/pages', title: 'Pages' },
     { id: 6, label: 'Manage User', route: '/admin/users', title: 'Manage User' },
     { id: 7, label: 'Services', route: '/admin/services', title: 'Services' },

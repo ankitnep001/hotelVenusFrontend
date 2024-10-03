@@ -36,7 +36,7 @@ const InputField: React.FC<InputProps> = ({ name, type, placeholder, autocomplet
             {type === 'password' && (
                 <button
                     type="button"
-                    className="absolute right-3 top-[45px] text-[#5b3423]"
+                    className="absolute right-3 top-[12px] text-[#5b3423]"
                     onClick={togglePassword}
                 >
                     {showPassword ? <IoMdEye /> : <IoIosEyeOff />}

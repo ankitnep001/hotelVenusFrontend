@@ -39,12 +39,16 @@ const SignUp = () => {
                 password: data.password,
             });
 
-            // Verify response structure
             console.log('Response:', response);
-
             navigate('/auth/login', { replace: true });
-        } catch (error: unknown) {
-            console.error('Error:', error);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            if (error.response) {
+                // Check if error is a validation error
+                console.error('Validation Error:', error.response.data.message);
+            } else {
+                console.error('Error:', error.message);
+            }
         }
     };
 
@@ -103,7 +107,7 @@ const SignUp = () => {
                     {/* Password */}
                     <div className='relative'>
                         <Label name={'password'} label={'Password'} />
-                        <AiOutlineLock className='absolute left-3 top-[45px] text-[#5b3423]' />
+                        <AiOutlineLock className='absolute left-3 top-[45px]   text-[#5b3423]' />
                         <InputField
                             name='password'
                             type={'password'}
@@ -119,7 +123,7 @@ const SignUp = () => {
                     {/* Confirm Password */}
                     <div className='relative'>
                         <Label name={'confirmPassword'} label={'Confirm Password'} />
-                        <AiOutlineLock className='absolute left-3 top-[45px] text-[#5b3423]' />
+                        <AiOutlineLock className='absolute left-3 top-[45px]  text-[#5b3423]' />
                         <InputField
                             name='confirmPassword'
                             type={'password'}

@@ -5,9 +5,9 @@ export const bookingSchema = () => {
         name: yup.string()
             .required('Name is required'),
 
-        numberOfPeople: yup.number()
-            .min(1, 'Number of people must be at least 1')
-            .required('Number of people is required'),
+        numberOfRoom: yup.number()
+            .min(1, 'Number of room must be at least 1')
+            .required('Number of room is required'),
 
         rooms: yup.array()
             .of(yup.string().required('Room selection is required'))

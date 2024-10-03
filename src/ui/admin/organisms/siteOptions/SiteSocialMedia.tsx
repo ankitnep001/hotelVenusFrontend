@@ -49,23 +49,32 @@ const SiteSocialMedia = () => {
         try {
             const accessToken = sessionStorage.getItem("accessTokenHotelVenus");
 
+            if (!accessToken) {
+                throw new Error("Access token is missing");
+            }
+
             const response = await axiosInstance.put("/social", data, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
             });
-
+            console.log(response);
 
             toast.show({ title: "Success", content: "Updated successfully", duration: 2000, type: 'success' });
 
-            console.log(response);
-
-        } catch (error) {
-            console.error("Error in the update request:", error);
-            toast.show({ title: "Error", content: "Update unsuccessfully", duration: 2000, type: 'success' });
-
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            if (error.response?.status === 401) {
+                toast.show({ title: "Unauthorized", content: "Session expired. Please log in again.", duration: 2000, type: 'error' });
+                // Redirect to login page or handle re-authentication
+                window.location.href = '/auth/login';
+            } else {
+                console.error("Error in the update request:", error);
+                toast.show({ title: "Error", content: "Update unsuccessful", duration: 2000, type: 'error' });
+            }
         }
     };
+
 
     return (
         <div className="w-80">

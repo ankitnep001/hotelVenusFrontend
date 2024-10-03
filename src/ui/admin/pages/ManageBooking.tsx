@@ -3,6 +3,7 @@
 import { GetBookingList } from "@interface/booking.interface";
 import { IPagination } from "@interface/global.interface";
 import axiosInstance from "@services/instance"; // Ensure this path is correct
+import { toast } from "@ui/common/organisms/toast/ToastManage";
 import { useDebounce } from "Debounce"; // Adjust the path as necessary
 import { useEffect, useState } from "react";
 import { FaSearch, FaWindowClose } from "react-icons/fa";
@@ -99,12 +100,11 @@ const ManageBooking = () => {
         try {
             await axiosInstance.delete(`/booking/${id}`);
             setBookingList(prevList => prevList.filter(booking => booking._id !== id));
-            // Optionally show success toast
-            // toast.show({ title: "Success", content: "Deleted successfully", duration: 2000, type: 'success' });
+
+            toast.show({ title: "Success", content: "Deleted successfully", duration: 2000, type: 'success' });
         } catch (error) {
             console.error('Error deleting booking:', error);
-            // Optionally show error toast
-            // toast.show({ title: "Error", content: "Delete unsuccessful", duration: 2000, type: 'error' });
+            toast.show({ title: "Error", content: "Delete unsuccessful", duration: 2000, type: 'error' });
         }
     };
 

@@ -12,7 +12,7 @@ interface RoomDetails {
     contentParagraphs: string[];
 }
 
-const RoomManager = () => {
+const AllRooms = () => {
     const [rooms, setRooms] = useState<RoomDetails[]>([]);
     const [roomData, setRoomData] = useState<RoomDetails>({
         name: '',
@@ -190,4 +190,4 @@ const RoomManager = () => {
     );
 };
 
-export default RoomManager;
+export default AllRooms;

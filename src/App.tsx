@@ -1,8 +1,8 @@
 
 import AdminDashboard from "@ui/admin/pages/AdminDashboard"
+import AllRoom from "@ui/admin/pages/AllRooms"
 import ManageBooking from "@ui/admin/pages/ManageBooking"
 import ManageAdmin from "@ui/admin/pages/ManageUser"
-import Room from "@ui/admin/pages/Room"
 import SiteOptions from "@ui/admin/pages/SiteOptions"
 import UserProfile from "@ui/admin/pages/UserProfile"
 import PageNotFound from "@ui/common/pages/PageNotFound"
@@ -114,7 +114,7 @@ const router = createBrowserRouter([
       { index: true, element: <AdminDashboard /> },
       { path: 'dashboard', element: <AdminDashboard /> },
       { path: 'options', element: <SiteOptions /> },
-      { path: 'rooms', element: <Room /> },
+      { path: 'rooms', element: <AllRoom /> },
       { path: 'users', element: <ManageAdmin /> },
       { path: 'profile', element: <UserProfile /> },
       { path: 'manage-booking', element: <ManageBooking /> },
