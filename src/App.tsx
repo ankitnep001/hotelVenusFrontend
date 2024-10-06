@@ -1,6 +1,7 @@
 
 import AdminDashboard from "@ui/admin/pages/AdminDashboard"
-import AllRoom from "@ui/admin/pages/AllRooms"
+import AllRooms from "@ui/admin/pages/AllRooms"
+import CreateRoom from "@ui/admin/pages/CreateRoom"
 import ManageBooking from "@ui/admin/pages/ManageBooking"
 import ManageAdmin from "@ui/admin/pages/ManageUser"
 import SiteOptions from "@ui/admin/pages/SiteOptions"
@@ -114,7 +115,9 @@ const router = createBrowserRouter([
       { index: true, element: <AdminDashboard /> },
       { path: 'dashboard', element: <AdminDashboard /> },
       { path: 'options', element: <SiteOptions /> },
-      { path: 'rooms', element: <AllRoom /> },
+      { path: 'rooms', element: <AllRooms /> },
+      { path: 'rooms/create', element: <CreateRoom /> },
+      { path: 'rooms/edit/:roomId', element: <CreateRoom /> }, // Reusing the CreateRoom component for editing
       { path: 'users', element: <ManageAdmin /> },
       { path: 'profile', element: <UserProfile /> },
       { path: 'manage-booking', element: <ManageBooking /> },

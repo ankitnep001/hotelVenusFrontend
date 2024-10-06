@@ -61,7 +61,9 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                                 <>
                                     {/* Show sublist below the parent when sidebar is open */}
                                     {isOpen && activeItem === item.id && (
+
                                         <ul className="ml-6 mt-2 text-sm text-[#56595a]"> {/* Smaller text for sublist */}
+                                            {/* <p>{item.label}</p> */}
                                             {item.subItems.map(subItem => (
                                                 <li key={subItem.id} className="mb-2">
                                                     <Link to={subItem.route} className="flex items-center">

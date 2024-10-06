@@ -1,191 +1,78 @@
-import Label from "@ui/common/atoms/Label";
-import { useState } from "react";
-import { IoTrashOutline } from "react-icons/io5";
+import axiosInstance from "@services/instance";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-interface RoomDetails {
+interface Room {
+    _id: string;
     name: string;
-    images: string[];
-    description: string;
-    features: string[];
-    slogan: string;
-    contentHeading: string;
-    contentParagraphs: string[];
+    slug: string;
 }
 
 const AllRooms = () => {
-    const [rooms, setRooms] = useState<RoomDetails[]>([]);
-    const [roomData, setRoomData] = useState<RoomDetails>({
-        name: '',
-        images: ['', ''],
-        description: '',
-        features: [''],
-        slogan: '',
-        contentHeading: '',
-        contentParagraphs: ['', '']
-    });
+    const [rooms, setRooms] = useState<Room[]>([]);
 
-    // Add room handler
-    const handleAddRoom = () => {
-        setRooms([...rooms, { ...roomData }]);
-        setRoomData({
-            name: '',
-            images: ['', ''],
-            description: '',
-            features: [''],
-            slogan: '',
-            contentHeading: '',
-            contentParagraphs: ['', '']
-        });
-    };
+    useEffect(() => {
+        // Fetch rooms from the backend
+        const fetchRooms = async () => {
+            try {
+                const response = await axiosInstance.get("/room");
+                const roomData = response.data?.data; // Access the nested `data` field
+                if (Array.isArray(roomData)) {
+                    setRooms(roomData); // Set rooms from the `data` array
+                } else {
+                    console.error("Unexpected data format:", response.data);
+                    setRooms([]); // Fallback in case the response is not an array
+                }
+            } catch (error) {
+                console.error("Error fetching rooms:", error);
+            }
+        };
 
-    // Delete room handler
-    const handleDeleteRoom = (index: number) => {
-        const updatedRooms = rooms.filter((_, i) => i !== index);
-        setRooms(updatedRooms);
-    };
+        fetchRooms();
+    }, []);
 
-    // Handle input changes
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, field: string, index?: number) => {
-        if (field === 'features') {
-            const updatedFeatures = [...roomData.features];
-            updatedFeatures[index!] = e.target.value;
-            setRoomData({ ...roomData, features: updatedFeatures });
-        } else if (field === 'images') {
-            const updatedImages = [...roomData.images];
-            updatedImages[index!] = e.target.value;
-            setRoomData({ ...roomData, images: updatedImages });
-        } else if (field === 'contentParagraphs') {
-            const updatedParagraphs = [...roomData.contentParagraphs];
-            updatedParagraphs[index!] = e.target.value;
-            setRoomData({ ...roomData, contentParagraphs: updatedParagraphs });
-        } else {
-            setRoomData({ ...roomData, [field]: e.target.value });
+    const handleDelete = async (id: string) => {
+        try {
+            await axiosInstance.delete(`/room/${id}`);
+            setRooms(rooms.filter((room) => room._id !== id));
+        } catch (error) {
+            console.error("Error deleting room:", error);
         }
     };
 
     return (
-        <div className="px-4">
-            <div className="flex flex-col gap-6">
-                <div className="bg-white p-6 rounded-md shadow-md w-full">
-                    <p className="font-poppins text-xl font-medium mb-4">Add Room Details</p>
-
-                    {/* Room Name Input */}
-                    <Label name={"name"} label={"Name"} />
-                    <input
-                        type="text"
-                        placeholder="Room Name"
-                        value={roomData.name}
-                        onChange={(e) => handleChange(e, 'name')}
-                        className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                    />
-
-                    {/* Images Inputs */}
-                    <input
-                        type="file"
-                        placeholder="Image URL 1"
-                        value={roomData.images[0]}
-                        onChange={(e) => handleChange(e, 'images', 0)}
-                        className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                    />
-                    {/* <input
-                        type="text"
-                        placeholder="Image URL 2"
-                        value={roomData.images[1]}
-                        onChange={(e) => handleChange(e, 'images', 1)}
-                        className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                    /> */}
-
-                    <div className="w-full flex gap-x-2">
-                        {/* Description */}
-                        <div className="flex-1">
-                            <Label name={"description"} label={"Description"} />
-                            <textarea
-                                placeholder="Description"
-                                value={roomData.description}
-                                onChange={(e) => handleChange(e, 'description')}
-                                className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                            />
-                        </div>
-
-                        {/* Slogan */}
-                        <div className="flex-1">
-                            <Label name={"slogan"} label={"Slogan"} />
-
-                            <textarea
-                                placeholder="Slogan"
-                                value={roomData.slogan}
-                                onChange={(e) => handleChange(e, 'slogan')}
-                                className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                            />
-                        </div>
-                    </div>
-                    {/* Content Heading */}
-                    <input
-                        type="text"
-                        placeholder="Content Heading"
-                        value={roomData.contentHeading}
-                        onChange={(e) => handleChange(e, 'contentHeading')}
-                        className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                    />
-
-                    {/* Content Paragraphs */}
-                    <div className="w-full flex gap-x-2">
-
-                        <div className="flex-1">
-                            <textarea
-                                placeholder="Content Paragraph 1"
-                                value={roomData.contentParagraphs[0]}
-                                onChange={(e) => handleChange(e, 'contentParagraphs', 0)}
-                                className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                            />
-                        </div>
-
-                        <div className="flex-1">
-                            <textarea
-                                placeholder="Content Paragraph 2"
-                                value={roomData.contentParagraphs[1]}
-                                onChange={(e) => handleChange(e, 'contentParagraphs', 1)}
-                                className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Features Input */}
-                    {roomData.features.map((feature, i) => (
-                        <input
-                            key={i}
-                            type="text"
-                            placeholder={`Feature ${i + 1}`}
-                            value={feature}
-                            onChange={(e) => handleChange(e, 'features', i)}
-                            className="w-full mb-3 p-2 border border-gray-300 rounded-md"
-                        />
-                    ))}
-
-                    {/* Add Room Button */}
-                    <button onClick={handleAddRoom} className="p-2 bg-[#6b3aa3] rounded-md text-white font-poppins">
-                        Add Room
-                    </button>
-                </div>
-
-                <div className="bg-white flex-1 p-6 rounded-md shadow-md">
-                    <p className="font-poppins text-xl font-medium mb-4">Room List</p>
-
-                    {/* Rooms List */}
+        <div className="p-4">
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-medium">All Rooms</h2>
+                <Link to="/admin/rooms/create" className="btn-primary">Create Room</Link>
+            </div>
+            <table className="w-full border-collapse">
+                <thead>
+                    <tr>
+                        <th className="border px-4 py-2">Name</th>
+                        <th className="border px-4 py-2">Slug</th>
+                        <th className="border px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {rooms.length > 0 ? (
-                        rooms.map((room, index) => (
-                            <div key={index} className="flex items-center justify-between mb-2 p-4 bg-gray-100 rounded-md">
-                                <p>{room.name}</p>
-                                <button onClick={() => handleDeleteRoom(index)} className="text-red-500">
-                                    <IoTrashOutline />
-                                </button>
-                            </div>
+                        rooms.map((room) => (
+                            <tr key={room._id}>
+                                <td className="border px-4 py-2">{room.name}</td>
+                                <td className="border px-4 py-2">{room.slug}</td>
+                                <td className="border px-4 py-2 flex space-x-4">
+                                    <Link to={`/admin/rooms/edit/${room._id}`} className="btn-edit">Edit</Link>
+                                    <button onClick={() => handleDelete(room._id)} className="btn-delete">Delete</button>
+                                </td>
+                            </tr>
                         ))
                     ) : (
-                        <p>No rooms added yet.</p>
+                        <tr>
+                            <td colSpan={3} className="text-center py-4">No rooms found.</td>
+                        </tr>
                     )}
-                </div>
-            </div>
+                </tbody>
+            </table>
         </div>
     );
 };
