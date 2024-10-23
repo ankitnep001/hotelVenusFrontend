@@ -32,6 +32,7 @@ const SignUp = () => {
 
     const onSubmit: SubmitHandler<SignUpFormProps> = async (data) => {
         try {
+            console.log('Form data:', data); // Log the data
             const response = await axiosInstance.post('/auth/register', {
                 name: data.name,
                 email: data.email,
@@ -44,7 +45,6 @@ const SignUp = () => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             if (error.response) {
-                // Check if error is a validation error
                 console.error('Validation Error:', error.response.data.message);
             } else {
                 console.error('Error:', error.message);

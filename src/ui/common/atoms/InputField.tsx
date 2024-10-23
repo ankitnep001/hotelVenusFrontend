@@ -3,7 +3,7 @@ import { IoIosEyeOff, IoMdEye } from "react-icons/io";
 
 interface InputProps {
     name: string;
-    type: 'text' | 'password'; // Type can now be explicitly defined
+    type: 'text' | 'password' | 'email'; // Type can now be explicitly defined
     placeholder?: string;
     autocomplete?: 'on' | 'off';
     disabled?: boolean;

@@ -1,9 +1,11 @@
 
 import AdminDashboard from "@ui/admin/pages/AdminDashboard"
 import AllRooms from "@ui/admin/pages/AllRooms"
+import CreatePage from "@ui/admin/pages/CreatePage"
 import CreateRoom from "@ui/admin/pages/CreateRoom"
 import ManageBooking from "@ui/admin/pages/ManageBooking"
 import ManageAdmin from "@ui/admin/pages/ManageUser"
+import OtherPages from "@ui/admin/pages/OtherPages"
 import SiteOptions from "@ui/admin/pages/SiteOptions"
 import UserProfile from "@ui/admin/pages/UserProfile"
 import PageNotFound from "@ui/common/pages/PageNotFound"
@@ -118,6 +120,13 @@ const router = createBrowserRouter([
       { path: 'rooms', element: <AllRooms /> },
       { path: 'rooms/create', element: <CreateRoom /> },
       { path: 'rooms/edit/:roomId', element: <CreateRoom /> }, // Reusing the CreateRoom component for editing
+      { path: 'pages', element: <OtherPages /> }, // Reusing the CreateRoom component for editing
+
+      { path: 'pages/create', element: <CreatePage /> },
+      { path: 'pages/create', element: <CreatePage /> },
+      { path: 'pages/edit/:pageId', element: <CreatePage /> }, // Reusing the CreateRoom component for editing
+
+
       { path: 'users', element: <ManageAdmin /> },
       { path: 'profile', element: <UserProfile /> },
       { path: 'manage-booking', element: <ManageBooking /> },
