@@ -17,6 +17,7 @@ import Contact from "@ui/landing/pages/Contact"
 import Deluxe from "@ui/landing/pages/Deluxe"
 import Executive from "@ui/landing/pages/Executive"
 import GampoSuite from "@ui/landing/pages/GampoSuite"
+
 import Home from "@ui/landing/pages/Home"
 import MediaGallery from "@ui/landing/pages/MediaGallery"
 import Policies from "@ui/landing/pages/Policies"
@@ -49,7 +50,15 @@ const router = createBrowserRouter([
     ],
   },
 
-  //Room Page
+  // Room Page
+  // {
+  //   path: '/rooms',
+  //   element: <RoomTemplate />, // This could be a layout component for rooms
+  //   children: [
+  //     { path: ':slug', element: <Rooms /> }, // Dynamic route for room details
+  //     { path: '*', element: <PageNotFound /> },
+  //   ],
+  // },
   {
     path: '/rooms',
     element: <>
@@ -59,9 +68,9 @@ const router = createBrowserRouter([
 
       { path: '/rooms/deluxe', element: <Deluxe /> },
       { path: '/rooms/executive', element: <Executive /> },
-      { path: '/rooms/songtsan-gampo', element: <GampoSuite /> },
-      { path: '/rooms/bhrikuti-suite', element: <BhrikutiSuite /> },
-      { path: '/rooms/wencheng-suite', element: <WenchengSuite /> },
+      { path: '/rooms/songstan', element: <GampoSuite /> },
+      { path: '/rooms/bhrikuti', element: <BhrikutiSuite /> },
+      { path: '/rooms/wencheng', element: <WenchengSuite /> },
 
       { path: '*', element: <PageNotFound /> },
     ],

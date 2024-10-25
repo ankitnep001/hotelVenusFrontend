@@ -1,4 +1,4 @@
-import Accomodation from "@ui/common/molecules/Accomodation";
+import Accomodation from "@ui/common/molecules/Accommodation";
 import NavigationList from "@ui/common/molecules/NavigationList";
 
 interface MenuProps {

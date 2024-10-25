@@ -1,5 +1,5 @@
 import { image } from "@config/constant/image"
-import Accomodation from "@ui/common/molecules/Accomodation"
+import Accommodation from "@ui/common/molecules/Accommodation"
 import Copyright from "@ui/common/molecules/Copyright"
 import FooterSocial from "@ui/common/molecules/FooterSocial"
 import Logo from "@ui/common/molecules/Logo"
@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="text-[#543421] flex-1 flex flex-col px-20 items-center  ">
                 <div className="flex flex-row justify-center items-center w-full">
                     <div className="flex-1">
-                        <Accomodation />
+                        <Accommodation />
                     </div>
 
                     <div className="flex-1 flex justify-center">

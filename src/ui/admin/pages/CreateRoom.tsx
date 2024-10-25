@@ -8,7 +8,11 @@ import { useParams } from "react-router-dom";
 interface RoomData {
     name: string;
     slug: string;
-    // Add other fields as needed
+    content: string;
+    heading: string;
+    intro: string;
+    price: string;
+    slogan: string;
 }
 
 const CreateRoom = () => {
@@ -23,9 +27,13 @@ const CreateRoom = () => {
                     console.log("Fetched room data:", response.data); // Log the entire response
 
                     // Update form values with fetched room data
-                    setValue('name', response.data.data.name || ''); // Set default value if undefined
-                    setValue('slug', response.data.data.slug || ''); // Set default value if undefined
-                    // Include other fields here and set default values
+                    setValue('name', response.data.data.name || '');
+                    setValue('slug', response.data.data.slug || '');
+                    setValue('content', response.data.data.content || '');
+                    setValue('heading', response.data.data.heading || '');
+                    setValue('intro', response.data.data.intro || '');
+                    setValue('price', response.data.data.price || '');
+                    setValue('slogan', response.data.data.slogan || '');
                 } catch (error) {
                     console.error("Error fetching room data:", error);
                 }
@@ -33,7 +41,7 @@ const CreateRoom = () => {
         };
 
         fetchRoomData();
-    }, [roomId, setValue]); // Ensure this only runs when roomId changes
+    }, [roomId, setValue]);
 
     const onSubmit = async (data: RoomData) => {
         try {
@@ -44,7 +52,6 @@ const CreateRoom = () => {
                 // Create new room
                 await axiosInstance.post("/room", data);
             }
-            // Handle success, redirect or display success message
             console.log("Room submitted successfully");
         } catch (error) {
             console.error("Error submitting room data:", error);
@@ -62,7 +69,7 @@ const CreateRoom = () => {
                         name="name"
                         type="text"
                         placeholder="Enter room name"
-                        register={register} // Use register for input binding
+                        register={register}
                     />
                 </div>
 
@@ -73,7 +80,62 @@ const CreateRoom = () => {
                         name="slug"
                         type="text"
                         placeholder="Enter room slug"
-                        register={register} // Use register for input binding
+                        register={register}
+                    />
+                </div>
+
+                {/* Room Price */}
+                <div className="mb-4">
+                    <Label name="price" label="Room Price" />
+                    <InputField
+                        name="price"
+                        type="number"
+                        placeholder="Enter room price"
+                        register={register}
+                    />
+                </div>
+
+                {/* Room Slogan */}
+                <div className="mb-4">
+                    <Label name="slogan" label="Room Slogan" />
+                    <InputField
+                        name="slogan"
+                        type="text"
+                        placeholder="Enter room slogan"
+                        register={register}
+                    />
+                </div>
+
+                {/* Room Content */}
+                <div className="mb-4">
+                    <Label name="content" label="Room Content" />
+                    <InputField
+                        name="content"
+                        type="textarea"
+                        placeholder="Enter room content"
+                        register={register}
+                    />
+                </div>
+
+                {/* Room Heading */}
+                <div className="mb-4">
+                    <Label name="heading" label="Room Heading" />
+                    <InputField
+                        name="heading"
+                        type="text"
+                        placeholder="Enter room heading"
+                        register={register}
+                    />
+                </div>
+
+                {/* Room Intro */}
+                <div className="mb-4">
+                    <Label name="intro" label="Room Intro" />
+                    <InputField
+                        name="intro"
+                        type="textarea"
+                        placeholder="Enter room intro"
+                        register={register}
                     />
                 </div>
 
